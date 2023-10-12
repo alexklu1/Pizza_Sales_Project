@@ -1,0 +1,91 @@
+SELECT * FROM pizza_sales;
+
+-- 1) Total revenue of all pizza orders
+SELECT round(sum(total_price), 0) AS TotalRevenue
+FROM pizza_sales;
+
+-- 2) Average order value
+SELECT SUM(total_price)/ count(distinct order_id) as AverageOrder
+FROM pizza_sales;
+
+-- 3) Total Pizzas sold
+SELECT SUM(quantity) AS TotalPizzaSold
+FROM pizza_sales;
+
+-- 4) Total Orders placed
+SELECT count(distinct order_id) as TotalOrdersPlaced
+FROM pizza_sales;
+
+-- 5) Averages pizzas per order
+SELECT sum(quantity) / count(distinct order_id) as AveragePizzaPerOrder
+FROM pizza_sales;
+
+-- 6) Daily sales trend
+SELECT dayname(str_to_date(order_date, '%d-%m-%y')) AS DayOfWeek, count(distinct order_id) AS DailyOrders
+FROM pizza_sales
+GROUP BY DayofWeek
+ORDER BY field(DayOfweek, 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday');
+
+-- 7) Monthly sales trend
+SELECT MONTHNAME(STR_TO_DATE(order_date, '%Y-%m-%d')) AS Month_Name, COUNT(DISTINCT order_id) AS Total_Orders
+FROM pizza_sales
+GROUP BY Month_Name
+ORDER BY Total_Orders DESC;
+
+-- 8) Percentage sales by category
+SELECT distinct pizza_category AS category, sum(total_price) * 100 / (SELECT SUM(total_price) FROM pizza_sales) AS PercentageSalesbyCategory 
+FROM pizza_sales
+group by category;
+
+-- 9) Percentage sales by Pizza Size
+SELECT pizza_size, round(SUM(total_price) * 100 / (SELECT SUM(total_price) FROM pizza_sales), 2) AS PercentageSalesbySize
+FROM pizza_sales
+group by pizza_size
+order by percentageSalesbySize DESC;
+
+-- 10) Top 5 best sellers based on Revenue
+SELECT DISTINCT pizza_name, sum(total_price) AS TotalRevenue
+FROM pizza_sales
+GROUP BY pizza_name
+ORDER BY TotalRevenue DESC
+LIMIT 5;
+
+-- 11) Top 5 best sellers based on Total Quantity
+SELECT  DISTINCT pizza_name, sum(quantity) AS TotalQuantity
+FROM pizza_sales
+GROUP BY pizza_name
+ORDER BY TotalQuantity DESC
+LIMIT 5;
+
+-- 12) Top 5 best sellers based on Total Orders
+SELECT pizza_name, count(distinct order_id) AS TotalOrders
+FROM pizza_sales
+GROUP BY pizza_name
+ORDER BY TotalOrders DESC
+LIMIT 5;
+
+-- 13) Bottom 5 best sellers based on Revenue
+SELECT  DISTINCT pizza_name, sum(total_price) AS TotalRevenue
+FROM pizza_sales
+GROUP BY pizza_name
+ORDER BY TotalRevenue
+LIMIT 5;
+
+-- 14) Bottom 5 best sellers based on Total Quantity
+SELECT  DISTINCT pizza_name, sum(quantity) AS TotalQuantity
+FROM pizza_sales
+GROUP BY pizza_name
+ORDER BY TotalQuantity
+LIMIT 5;
+
+-- 15) Bottom 5 best sellers based on Total Orders
+SELECT  pizza_name, count(distinct order_id) AS TotalOrders
+FROM pizza_sales
+GROUP BY pizza_name
+ORDER BY TotalOrders
+LIMIT 5;
+
+-- 16) Total Pizza Sold by category
+SELECT distinct pizza_category, sum(quantity) AS total_pizzas_sold
+FROM pizza_sales
+GROUP BY pizza_category;
