@@ -16,3 +16,7 @@ Pizza Size Preferences: By scrutinising the sales data for different pizza sizes
 Top and Bottom Performers: Through detailed analysis, I identified the star performers in the company’s pizza lineup as well as the underperforming varieties. This knowledge equips the company to capitalise on its strengths and address the weaknesses in its product offerings.
 
 Interactive Dashboard: The insights derived from this analysis are meticulously visualised in an interactive Power BI dashboard. This dashboard not only provides a clear snapshot of the findings but also serves as a dynamic tool for ongoing decision-making, enabling stakeholders to explore the data intuitively.
+
+![image](https://github.com/alexklu1/Pizza_Sales_Project/assets/113979059/f544b659-7fee-4338-b6b1-16ffa7b3be7e)
+
+- [@alexklu1](https://www.github.com/alexklu1)
