@@ -19,7 +19,7 @@ Interactive Dashboard: The insights derived from this analysis are meticulously 
 
 ![image](https://github.com/alexklu1/Pizza_Sales_Project/assets/113979059/f544b659-7fee-4338-b6b1-16ffa7b3be7e)
 
-- ![image](https://github.com/alexklu1/Pizza_Sales_Project/assets/113979059/4922ecda-3547-46ef-8335-43f2c84552be)
+![image](https://github.com/alexklu1/Pizza_Sales_Project/assets/113979059/4922ecda-3547-46ef-8335-43f2c84552be)
 
 - ## Authors
 
